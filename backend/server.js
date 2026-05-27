@@ -58,4 +58,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 });
 
+
+// EXPORT APP FOR TESTING
+
 export default app;

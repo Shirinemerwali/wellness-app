@@ -3,7 +3,7 @@ import express from "express";
 const router = express.Router();
 
 
-// TEST
+// TEST ROUTE
 
 router.get("/", (req, res) => {
 
@@ -12,11 +12,11 @@ router.get("/", (req, res) => {
 });
 
 
-// REGISTER
+// REGISTER USER
 
 router.post("/register", (req, res) => {
 
-  res.json({
+  res.status(201).json({
 
     token: "testtoken"
 
@@ -25,16 +25,17 @@ router.post("/register", (req, res) => {
 });
 
 
-// LOGIN
+// LOGIN USER
 
 router.post("/login", (req, res) => {
 
-  res.json({
+  res.status(200).json({
 
     token: "testtoken"
 
   });
 
 });
+
 
 export default router;

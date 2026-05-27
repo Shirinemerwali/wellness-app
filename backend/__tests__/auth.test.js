@@ -15,4 +15,18 @@ describe("Auth Routes", () => {
 
   });
 
+  it("should create a new user", async () => {
+
+    const response = await request(app)
+      .post("/api/users/register")
+      .send({
+        name: "Test User",
+        email: "test@test.com",
+        password: "123456"
+      });
+
+    expect(response.status).toBe(201);
+
+  });
+
 });
