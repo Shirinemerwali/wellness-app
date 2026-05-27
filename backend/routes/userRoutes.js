@@ -1,5 +1,10 @@
 import express from "express";
 
+import {
+  registerUser,
+  loginUser
+} from "../controllers/userController.js";
+
 const router = express.Router();
 
 
@@ -14,28 +19,12 @@ router.get("/", (req, res) => {
 
 // REGISTER USER
 
-router.post("/register", (req, res) => {
-
-  res.status(201).json({
-
-    token: "testtoken"
-
-  });
-
-});
+router.post("/register", registerUser);
 
 
 // LOGIN USER
 
-router.post("/login", (req, res) => {
-
-  res.status(200).json({
-
-    token: "testtoken"
-
-  });
-
-});
+router.post("/login", loginUser);
 
 
 export default router;

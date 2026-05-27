@@ -1,91 +1,143 @@
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const generateToken = require('../utils/generateToken');
+import User from "../models/User.js";
+
+import bcrypt from "bcryptjs";
+
+import generateToken from "../utils/generateToken.js";
+
 
 // REGISTER USER
+
 const registerUser = async (req, res) => {
 
   try {
 
     const { email, password } = req.body;
 
-    // Hash password
+    // CHECK IF USER EXISTS
+
+    const userExists = await User.findOne({ email });
+
+    if (userExists) {
+
+      return res.status(400).json({
+
+        message: "User already exists"
+
+      });
+
+    }
+
+    // HASH PASSWORD
+
     const salt = await bcrypt.genSalt(10);
 
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(
+      password,
+      salt
+    );
 
-    // Create user
+    // CREATE USER
+
     const user = await User.create({
+
       email,
+
       password: hashedPassword
+
     });
 
-    // Send response
+    // RESPONSE
+
     res.status(201).json({
+
       _id: user._id,
+
       email: user.email,
+
       token: generateToken(user._id)
+
     });
 
   } catch (error) {
 
-    res.status(400).json({
+    res.status(500).json({
+
       message: error.message
+
     });
 
   }
 
 };
 
+
 // LOGIN USER
+
 const loginUser = async (req, res) => {
 
   try {
 
     const { email, password } = req.body;
 
-    // Find user
+    // FIND USER
+
     const user = await User.findOne({ email });
 
-    // Check if user exists
+    // CHECK USER
+
     if (!user) {
 
       return res.status(401).json({
-        message: 'Fel email eller lösenord'
+
+        message: "Invalid credentials"
+
       });
 
     }
 
-    // Compare password
-    const isMatch = await user.matchPassword(password);
+    // CHECK PASSWORD
 
-    // Wrong password
+    const isMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
+
     if (!isMatch) {
 
       return res.status(401).json({
-        message: 'Fel email eller lösenord'
+
+        message: "Invalid credentials"
+
       });
 
     }
 
-    // Login success
+    // RESPONSE
+
     res.status(200).json({
+
       _id: user._id,
+
       email: user.email,
+
       token: generateToken(user._id)
+
     });
 
   } catch (error) {
 
     res.status(500).json({
+
       message: error.message
+
     });
 
   }
 
 };
 
-module.exports = {
+
+export {
   registerUser,
   loginUser
 };

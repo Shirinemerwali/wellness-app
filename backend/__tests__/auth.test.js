@@ -21,7 +21,7 @@ describe("Auth Routes", () => {
       .post("/api/users/register")
       .send({
         name: "Test User",
-        email: "test@test.com",
+       email: `test${Date.now()}@test.com`,
         password: "123456"
       });
 
