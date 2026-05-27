@@ -16,7 +16,7 @@ function Register({ setToken }) {
 
       const response = await fetch(
 
-        "http://localhost:3001/api/users/register",
+       "https://wellness-app-icbg.onrender.com/api/users/register",
 
         {
 
