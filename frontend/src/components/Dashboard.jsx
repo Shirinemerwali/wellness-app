@@ -1,7 +1,5 @@
 import '../styles/Dashboard.css';
 
-import dashboardBg from '../assets/blue.jpg';
-
 function Dashboard({ setCurrentPage, setToken }) {
 
   // LOGOUT
@@ -16,12 +14,7 @@ function Dashboard({ setCurrentPage, setToken }) {
 
   return (
 
-    <div
-      className="dashboard"
-      style={{
-        backgroundImage: `url(${dashboardBg})`
-      }}
-    >
+    <div className="dashboard">
 
       {/* SIDEBAR */}
 

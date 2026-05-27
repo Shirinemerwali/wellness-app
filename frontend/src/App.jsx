@@ -1,28 +1,31 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import './styles/App.css';
+import "./styles/App.css";
 
-import heroImage from './assets/hero.jpg';
+import heroImage from "./assets/hero.jpg";
 
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import LoginForm from './components/LoginForm';
-import Dashboard from './components/Dashboard';
-import Nutrition from './components/Nutrition';
-import Workouts from './components/Workouts';
-import Journal from './components/Journal';
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Dashboard from "./components/Dashboard";
+import Nutrition from "./components/Nutrition";
+import Workouts from "./components/Workouts";
+import Journal from "./components/Journal";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
 
   const [showLogin, setShowLogin] = useState(false);
 
-  const [authMode, setAuthMode] = useState('login');
+  const [authMode, setAuthMode] = useState("login");
 
   const [token, setToken] = useState(
-    localStorage.getItem('token')
+    localStorage.getItem("token")
   );
 
-  const [currentPage, setCurrentPage] = useState("dashboard");
+  const [currentPage, setCurrentPage] =
+    useState("dashboard");
+
 
   // NUTRITION PAGE
 
@@ -38,6 +41,7 @@ function App() {
 
   }
 
+
   // WORKOUTS PAGE
 
   if (token && currentPage === "workouts") {
@@ -51,6 +55,7 @@ function App() {
     );
 
   }
+
 
   // JOURNAL PAGE
 
@@ -66,6 +71,7 @@ function App() {
 
   }
 
+
   // DASHBOARD PAGE
 
   if (token) {
@@ -80,6 +86,7 @@ function App() {
     );
 
   }
+
 
   return (
 
@@ -101,14 +108,24 @@ function App() {
         setShowLogin={setShowLogin}
       />
 
-      {showLogin && (
 
-        <LoginForm
-          setToken={setToken}
-          authMode={authMode}
-        />
+      {/* LOGIN COMPONENT */}
 
-      )}
+      {showLogin && authMode === "login" && (
+
+  <Login
+    setToken={setToken}
+  />
+
+)}
+
+{showLogin && authMode === "register" && (
+
+  <Register
+    setToken={setToken}
+  />
+
+)}
 
     </div>
 

@@ -1,3 +1,9 @@
+.nutrition,
+.nutrition * {
+
+  font-family: 'Georgia', serif;
+
+}
 .nutrition {
   min-height: 100vh;
 

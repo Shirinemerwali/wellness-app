@@ -4,11 +4,7 @@
 
   padding: 40px;
 
-  background: linear-gradient(
-    to bottom,
-    #faf7ff,
-    #f3ecff
-  );
+  background: #efebeb;
 
   font-family: sans-serif;
 
@@ -71,13 +67,15 @@
 
 .quote-card {
 
-  background: #f4ebff;
+  background: #fcfcfc;
 
   padding: 40px;
 
   border-radius: 30px;
 
   margin-bottom: 30px;
+
+  border: 1px solid #f1f1f1;
 
 }
 
@@ -95,7 +93,7 @@
 
 .quote-card p {
 
-  color: #8b5cf6;
+  color: #000000;
 
   font-weight: 600;
 
@@ -146,7 +144,7 @@
 
   font-size: 28px;
 
-  background: #f3f4f6;
+  background: #f8f8f8;
 
   cursor: pointer;
 
@@ -158,7 +156,7 @@
 
   transform: scale(1.1);
 
-  background: #e9d5ff;
+  background: #f0f0f0;
 
 }
 
@@ -215,9 +213,9 @@
 
   border-radius: 18px;
 
-  background: #8b5cf6;
+  background: #f3eadf;
 
-  color: white;
+  color: black;
 
   font-size: 15px;
 
@@ -256,7 +254,7 @@
 
   margin-bottom: 10px;
 
-  color: #8b5cf6;
+  color: #000000;
 
 }
 

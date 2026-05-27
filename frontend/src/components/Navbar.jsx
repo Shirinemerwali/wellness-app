@@ -10,10 +10,7 @@ function Navbar({ setShowLogin, setAuthMode }) {
 
       <ul className="nav-links">
 
-        <li>About</li>
-        <li>Features</li>
-        <li>Journal</li>
-        <li>Contact</li>
+        
 
       </ul>
 
